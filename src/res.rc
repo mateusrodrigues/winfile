@@ -95,6 +95,7 @@ BEGIN
     MENUITEM    "Select &Files...", IDM_SELECT
 	MENUITEM    "Start Cmd Shel&l...", IDM_STARTCMDSHELL
     MENUITEM    "Start Po&werShell...", IDM_STARTPOWERSHELL
+	MENUITEM	"Start Ba&sh...", IDM_STARTBASH
 	MENUITEM    "&Goto Directory...\tCtrl+G", IDM_GOTODIR
     MENUITEM    SEPARATOR
     MENUITEM    "E&xit",            IDM_EXIT
@@ -198,6 +199,7 @@ BEGIN
     MENUITEM    "&Run...",          IDM_RUN
 	MENUITEM    "Start Cmd She&ll...", IDM_STARTCMDSHELL
 	MENUITEM    "Start Po&werShell...", IDM_STARTPOWERSHELL
+	MENUITEM	"Start Ba&sh...", IDM_STARTBASH
 	MENUITEM    "&Goto Directory...", IDM_GOTODIR
 	MENUITEM	"About",			IDM_ABOUT
 	END

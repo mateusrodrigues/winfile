@@ -1077,6 +1077,34 @@ AppCommandProc(register DWORD id)
        }
        break;
 
+	case IDM_STARTBASH:
+	{
+		BOOL bRunAs;
+		BOOL bDir;
+		DWORD cchEnv;
+		TCHAR szToRun[MAXPATHLEN];
+		LPTSTR szDir;
+#define BashShellParamFormat TEXT(" -c \"cd \\ && $SHELL\"")
+		TCHAR szParams[MAXPATHLEN + COUNTOF(BashShellParamFormat)];
+
+		szDir = GetSelection(1 | 4 | 16, &bDir);
+		if (!bDir && szDir)
+			StripFilespec(szDir);
+
+		bRunAs = GetKeyState(VK_SHIFT) < 0;
+
+		if (GetSystemDirectory(szToRun, MAXPATHLEN) != 0)
+			lstrcat(szToRun, TEXT("\\bash.exe"));
+		else
+			lstrcpy(szToRun, TEXT("bash.exe"));
+		szParams[0] = wsprintf(szParams, BashShellParamFormat, szDir);
+
+		ret = ExecProgram(szToRun, szParams, szDir, FALSE, bRunAs);
+
+		LocalFree(szDir);
+	}
+	break;
+
    case IDM_SELECT:
 
       // push the focus to the dir half so when they are done
